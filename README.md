@@ -23,3 +23,5 @@ Creates a random list of given type with elements from the generator
 ## bool GenerateRandomBool()
 
 Creates a random bool
+
+[![.NET Core Desktop](https://github.com/deBabbbe/CsUnitTestHelper/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/deBabbbe/CsUnitTestHelper/actions/workflows/dotnet-desktop.yml)
