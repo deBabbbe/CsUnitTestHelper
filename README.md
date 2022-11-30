@@ -12,10 +12,10 @@ Creates a random string with chars from A-Z with 10 chars
 
 Creates a random string with chars from A-Z with n chars
 
-## GenerateRandomList<T>(Func<T> Generator, int numberOfElements)
+## List<T> GenerateRandomList<T>(Func<T> Generator, int numberOfElements)
 
 Creates a random list of given type with elements from the generator
 
-## GenerateRandomBool()
+## bool GenerateRandomBool()
 
 Creates a random bool
