@@ -145,7 +145,8 @@ public class HelperTests
         var prefix = Helper.GenerateRandomString();
         var result = Helper.GenerateRandomStringGuidWithPrefix(prefix);
         StringAssert.StartsWith(prefix, result);
-        var isParsable = Guid.TryParse(result.Replace(prefix, ""), out var _);
+        var isParsable = Guid.TryParse(result.Replace(prefix, ""), out var parsedGuid);
         Assert.IsTrue(isParsable, "Guid not parsable");
+        Assert.AreNotEqual(Guid.Empty, parsedGuid);
     }
 }
