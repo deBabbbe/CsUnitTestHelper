@@ -12,9 +12,27 @@ public class HelperTests
     [Test]
     public void GenerateRandomIntTest()
     {
-        Assert.IsTrue(Helper.GenerateRandomInt() > 0, "Int smaller 0");
-        Assert.IsTrue(Helper.GenerateRandomInt() <= 9, "Int greater than 9");
-        Assert.AreNotEqual(Helper.GenerateRandomInt(), Helper.GenerateRandomInt());
+        var results = Helper.GenerateRandomList(() => Helper.GenerateRandomInt(), 10);
+        results.ForEach(result =>
+        {
+            Assert.IsTrue(result > 0, "Int smaller 0");
+            Assert.IsTrue(result <= 9, "Int greater than 9");
+            Assert.AreNotEqual(Helper.GenerateRandomInt(), result);
+        });
+    }
+
+    [Test]
+    public void GenerateRandomIntTest_WithRange()
+    {
+        var min = 100;
+        var max = 100000;
+        var results = Helper.GenerateRandomList(() => Helper.GenerateRandomInt(min, max), 100);
+        results.ForEach(result =>
+        {
+            Assert.IsTrue(result >= min, $"Int smaller or equal than {min}");
+            Assert.IsTrue(result <= max, $"Int greater or equal than {max}");
+            Assert.AreNotEqual(Helper.GenerateRandomInt(), result);
+        });
     }
 
     [Test]

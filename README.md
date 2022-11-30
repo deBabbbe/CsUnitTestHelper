@@ -4,6 +4,10 @@
 
 Creates a random integer between 1 and 9
 
+## int GenerateRandomInt(int min, int max)
+
+Creates a random integer between min and max
+
 ## string GenerateRandomString()
 
 Creates a random string with chars from A-Z with 10 chars
