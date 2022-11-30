@@ -24,4 +24,8 @@ Creates a random list of given type with elements from the generator
 
 Creates a random bool
 
+## DateTime GetGenerateRandomDateTime()
+
+Creates a random DateTime between 1870 and 2300
+
 [![.NET Core Desktop](https://github.com/deBabbbe/CsUnitTestHelper/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/deBabbbe/CsUnitTestHelper/actions/workflows/dotnet-desktop.yml)

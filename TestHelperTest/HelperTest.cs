@@ -112,4 +112,30 @@ public class HelperTests
         var randomBools = Helper.GenerateRandomList(Helper.GenerateRandomBool, 100);
         Assert.AreEqual(2, randomBools.Distinct().Count());
     }
+
+    [Test]
+    public void GetGenerateRandomDateTimeTest()
+    {
+        var result = Helper.GetGenerateRandomDateTime();
+
+        Assert.AreNotEqual(DateTime.MinValue, result);
+
+        Assert.IsTrue(result.Year >= 1870);
+        Assert.IsTrue(result.Year < 2300);
+
+        Assert.IsTrue(result.Month >= 1);
+        Assert.IsTrue(result.Month <= 12);
+
+        Assert.IsTrue(result.Day >= 1);
+        Assert.IsTrue(result.Day >= 27);
+
+        Assert.IsTrue(result.Hour >= 1);
+        Assert.IsTrue(result.Hour < 24);
+
+        Assert.IsTrue(result.Minute >= 0);
+        Assert.IsTrue(result.Minute < 60);
+
+        Assert.IsTrue(result.Second >= 0);
+        Assert.IsTrue(result.Second < 60);
+    }
 }

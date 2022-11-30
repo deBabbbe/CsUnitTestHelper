@@ -28,4 +28,16 @@ public static class Helper
         Enumerable.Range(0, numberOfElements).Select(_ => Generator()).ToList();
 
     public static bool GenerateRandomBool() => _random.Next(0, 2) == 1;
+
+    public static DateTime GetGenerateRandomDateTime()
+    {
+        var year = _random.Next(1870, 2300);
+        var month = _random.Next(1, 13);
+        var day = _random.Next(1, 27);
+        var hour = _random.Next(0, 24);
+        var minute = _random.Next(0, 60);
+        var second = _random.Next(0, 60);
+
+        return new DateTime(year, month, day, hour, minute, second);
+    }
 }
