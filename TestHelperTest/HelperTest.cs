@@ -12,13 +12,14 @@ public class HelperTests
     [Test]
     public void GenerateRandomIntTest()
     {
-        var results = Helper.GenerateRandomList(() => Helper.GenerateRandomInt(), 10);
-        results.ForEach(result =>
-        {
-            Assert.IsTrue(result > 0, "Int smaller 0");
-            Assert.IsTrue(result <= 9, "Int greater than 9");
-            Assert.AreNotEqual(Helper.GenerateRandomInt(), result);
-        });
+        var result = Helper.GenerateRandomInt();
+
+        var toCompare = Helper.GenerateRandomInt();
+        if (toCompare == result) toCompare = Helper.GenerateRandomInt();
+
+        Assert.IsTrue(result > 0, "Int smaller 0");
+        Assert.IsTrue(result <= 9, "Int greater than 9");
+        Assert.AreNotEqual(toCompare, result);
     }
 
     [Test]
