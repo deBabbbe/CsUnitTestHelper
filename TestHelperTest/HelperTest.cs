@@ -127,7 +127,7 @@ public class HelperTests
         Assert.IsTrue(result.Month <= 12);
 
         Assert.IsTrue(result.Day >= 1);
-        Assert.IsTrue(result.Day > 27);
+        Assert.IsTrue(result.Day < 27);
 
         Assert.IsTrue(result.Hour >= 1);
         Assert.IsTrue(result.Hour < 24);
