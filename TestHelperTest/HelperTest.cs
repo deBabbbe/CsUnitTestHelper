@@ -17,8 +17,7 @@ public class HelperTests
         var toCompare = Helper.GenerateRandomInt();
         if (toCompare == result) toCompare = Helper.GenerateRandomInt();
 
-        Assert.IsTrue(result > 0, "Int smaller 0");
-        Assert.IsTrue(result <= 9, "Int greater than 9");
+        Assert.IsTrue(result.IsInBetween(1, 9));
         Assert.AreNotEqual(toCompare, result);
     }
 
@@ -30,8 +29,7 @@ public class HelperTests
         var results = Helper.GenerateRandomList(() => Helper.GenerateRandomInt(min, max), 100);
         results.ForEach(result =>
         {
-            Assert.IsTrue(result >= min, $"Int smaller or equal than {min}");
-            Assert.IsTrue(result <= max, $"Int greater or equal than {max}");
+            Assert.IsTrue(result.IsInBetween(min, max));
             Assert.AreNotEqual(Helper.GenerateRandomInt(), result);
         });
     }
@@ -119,24 +117,12 @@ public class HelperTests
         var result = Helper.GetGenerateRandomDateTime();
 
         Assert.AreNotEqual(DateTime.MinValue, result);
-
-        Assert.IsTrue(result.Year >= 1870);
-        Assert.IsTrue(result.Year < 2300);
-
-        Assert.IsTrue(result.Month >= 1);
-        Assert.IsTrue(result.Month <= 12);
-
-        Assert.IsTrue(result.Day >= 1);
-        Assert.IsTrue(result.Day < 27);
-
-        Assert.IsTrue(result.Hour >= 0);
-        Assert.IsTrue(result.Hour < 24);
-
-        Assert.IsTrue(result.Minute >= 0);
-        Assert.IsTrue(result.Minute < 60);
-
-        Assert.IsTrue(result.Second >= 0);
-        Assert.IsTrue(result.Second < 60);
+        Assert.IsTrue(result.Year.IsInBetween(1870, 2300));
+        Assert.IsTrue(result.Month.IsInBetween(1, 12));
+        Assert.IsTrue(result.Day.IsInBetween(1, 26));
+        Assert.IsTrue(result.Hour.IsInBetween(0, 23));
+        Assert.IsTrue(result.Minute.IsInBetween(0, 59));
+        Assert.IsTrue(result.Second.IsInBetween(0, 59));
     }
 
     [Test]

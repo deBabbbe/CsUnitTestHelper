@@ -31,7 +31,7 @@ public static class Helper
 
     public static DateTime GetGenerateRandomDateTime()
     {
-        var year = _random.Next(1870, 2300);
+        var year = _random.Next(1870, 2301);
         var month = _random.Next(1, 13);
         var day = _random.Next(1, 27);
         var hour = _random.Next(0, 24);
