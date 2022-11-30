@@ -47,4 +47,50 @@ public class HelperTests
         var result = Helper.GenerateRandomString(count);
         StringAssert.IsMatch($"[A-Z]{{{count}}}", result);
     }
+
+    [Test]
+    public void GenerateRandomListTest_SingleEntry()
+    {
+        var count = Helper.GenerateRandomInt();
+        var expected = new List<string> { "Test" };
+        var result = Helper.GenerateRandomList(() => "Test", 1);
+        CollectionAssert.AreEqual(expected, result);
+    }
+
+    [Test]
+    public void GenerateRandomListTest_SingleEntry_DifferentType()
+    {
+        var count = Helper.GenerateRandomInt();
+        var expected = new List<int> { 1 };
+        var result = Helper.GenerateRandomList(() => 1, 1);
+        CollectionAssert.AreEqual(expected, result);
+    }
+
+    [Test]
+    public void GenerateRandomListTest_FiveEntries()
+    {
+        var count = Helper.GenerateRandomInt();
+        var expected = new List<string> { "ABC", "ABC", "ABC", "ABC", "ABC" };
+        var result = Helper.GenerateRandomList(() => "ABC", 5);
+        CollectionAssert.AreEqual(expected, result);
+    }
+
+    [Test]
+    public void GenerateRandomListTest_MultipleEntriesWithDifferentValues()
+    {
+        var count = 0;
+        string GetAlphabet() => ((char)('A' + count++)).ToString();
+        var expected = new List<string> { "A", "B", "C", "D", "E" };
+
+        var result = Helper.GenerateRandomList(GetAlphabet, 5);
+
+        CollectionAssert.AreEqual(expected, result);
+    }
+
+    [Test]
+    public void GenerateRandomBoolTest()
+    {
+        var randomBools = Helper.GenerateRandomList(Helper.GenerateRandomBool, 100);
+        Assert.AreEqual(2, randomBools.Distinct().Count());
+    }
 }

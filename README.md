@@ -1,13 +1,21 @@
 # Unit test helper for C#
 
-## GenerateRandomInt()
+## int GenerateRandomInt()
 
 Creates a random integer between 1 and 9
 
-## GenerateRandomString()
+## string GenerateRandomString()
 
 Creates a random string with chars from A-Z with 10 chars
 
-## GenerateRandomString(int n)
+## string GenerateRandomString(int numberOfCharacters)
 
 Creates a random string with chars from A-Z with n chars
+
+## GenerateRandomList<T>(Func<T> Generator, int numberOfElements)
+
+Creates a random list of given type with elements from the generator
+
+## GenerateRandomBool()
+
+Creates a random bool
