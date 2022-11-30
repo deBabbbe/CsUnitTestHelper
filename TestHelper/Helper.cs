@@ -40,4 +40,7 @@ public static class Helper
 
         return new DateTime(year, month, day, hour, minute, second);
     }
+
+    public static string GenerateRandomStringGuidWithPrefix(string prefix) =>
+        $"{prefix}{Guid.NewGuid().ToString()}";
 }

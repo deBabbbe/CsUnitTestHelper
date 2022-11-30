@@ -138,4 +138,14 @@ public class HelperTests
         Assert.IsTrue(result.Second >= 0);
         Assert.IsTrue(result.Second < 60);
     }
+
+    [Test]
+    public void GenerateRandomStringGuidWithPrefixTest()
+    {
+        var prefix = Helper.GenerateRandomString();
+        var result = Helper.GenerateRandomStringGuidWithPrefix(prefix);
+        StringAssert.StartsWith(prefix, result);
+        var isParsable = Guid.TryParse(result.Replace(prefix, ""), out var _);
+        Assert.IsTrue(isParsable, "Guid not parsable");
+    }
 }
