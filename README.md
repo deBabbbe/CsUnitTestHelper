@@ -18,7 +18,7 @@ Creates a random string with chars from A-z with 10 chars
 
 Creates a random string with chars from A-z with passed numberOfCharacters
 
-### List<T> GenerateRandomList<T>(Func<T> Generator, int numberOfElements)
+### List\<T\> GenerateRandomList\<T\>(Func\<T\> Generator, int numberOfElements)
 
 Creates a random list of given type with elements from the generator
 
