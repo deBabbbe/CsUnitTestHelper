@@ -1,3 +1,6 @@
+[![.NET Core Desktop](https://github.com/deBabbbe/CsUnitTestHelper/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/deBabbbe/CsUnitTestHelper/actions/workflows/dotnet-desktop.yml)
+
+
 # Unit test helper for C#
 
 ## int GenerateRandomInt()
@@ -31,5 +34,3 @@ Creates a random DateTime between 1870 and 2300
 ## string GenerateRandomStringGuidWithPrefix(string prefix)
 
 Returns a GUID as string with the given prefix
-
-[![.NET Core Desktop](https://github.com/deBabbbe/CsUnitTestHelper/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/deBabbbe/CsUnitTestHelper/actions/workflows/dotnet-desktop.yml)
