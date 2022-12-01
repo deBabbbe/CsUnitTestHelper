@@ -10,11 +10,11 @@ Creates a random integer between min and max
 
 ## string GenerateRandomString()
 
-Creates a random string with chars from A-Z with 10 chars
+Creates a random string with chars from A-z with 10 chars
 
 ## string GenerateRandomString(int numberOfCharacters)
 
-Creates a random string with chars from A-Z with n chars
+Creates a random string with chars from A-z with n chars
 
 ## List<T> GenerateRandomList<T>(Func<T> Generator, int numberOfElements)
 

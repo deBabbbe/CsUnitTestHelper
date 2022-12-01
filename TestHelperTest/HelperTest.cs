@@ -38,7 +38,7 @@ public class HelperTests
     public void GenerateRandomStringTest_DefaultValueIsUsed()
     {
         var result = Helper.GenerateRandomString();
-        StringAssert.IsMatch("[A-Z]{10}", result);
+        StringAssert.IsMatch("[A-z]{10}", result);
     }
 
     [Test]
@@ -46,7 +46,7 @@ public class HelperTests
     {
         var count = 1;
         var result = Helper.GenerateRandomString(count);
-        StringAssert.IsMatch($"[A-Z]{{{count}}}", result);
+        StringAssert.IsMatch($"[A-z]{{{count}}}", result);
     }
 
     [Test]
@@ -54,15 +54,16 @@ public class HelperTests
     {
         var count = 100;
         var result = Helper.GenerateRandomString(count);
-        StringAssert.IsMatch($"[A-Z]{{{count}}}", result);
+        StringAssert.IsMatch($"[A-z]{{{count}}}", result);
     }
 
     [Test]
     public void GenerateRandomStringTest_RandomCount()
     {
-        var count = Helper.GenerateRandomInt();
+        var count = Helper.GenerateRandomInt(1000, 5000);
         var result = Helper.GenerateRandomString(count);
-        StringAssert.IsMatch($"[A-Z]{{{count}}}", result);
+        StringAssert.IsMatch($"[A-z]{{{count}}}", result);
+        StringAssert.IsMatch("[a-z]", result);
     }
 
     [Test]

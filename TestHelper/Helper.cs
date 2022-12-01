@@ -13,7 +13,7 @@ public static class Helper
     {
         var builder = new StringBuilder(numberOfCharacters);
         var offset = 'A';
-        const int lettersOffset = 26;
+        const int lettersOffset = 26 * 2;
 
         for (var i = 0; i < numberOfCharacters; i++)
         {
