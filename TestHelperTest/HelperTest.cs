@@ -17,7 +17,7 @@ public class HelperTests
         var toCompare = Helper.GenerateRandomInt();
         if (toCompare == result) toCompare = Helper.GenerateRandomInt();
 
-        Assert.IsTrue(result.IsInBetween(1, 9));
+        Assert.IsTrue(result.IsInBetween(1, 10));
         Assert.AreNotEqual(toCompare, result);
     }
 
