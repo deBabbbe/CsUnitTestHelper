@@ -136,4 +136,11 @@ public class HelperTests
         Assert.IsTrue(isParsable, "Guid not parsable");
         Assert.AreNotEqual(Guid.Empty, parsedGuid);
     }
+
+    [Test]
+    public void ToRandomCaseTest()
+    {
+        var text = Helper.GenerateRandomString();
+        Assert.AreNotEqual(text.ToRandomCase(), text.ToRandomCase());
+    }
 }

@@ -33,3 +33,7 @@ Creates a random DateTime between 1870 and 2300
 ### string GenerateRandomStringGuidWithPrefix(string prefix)
 
 Returns a GUID as string with the given prefix
+
+### string ToRandomCase(this string text)
+
+Returns the passed string in random case

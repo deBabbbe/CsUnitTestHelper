@@ -43,4 +43,13 @@ public static class Helper
 
     public static string GenerateRandomStringGuidWithPrefix(string prefix) =>
         $"{prefix}{Guid.NewGuid().ToString()}";
+
+    public static string ToRandomCase(this string text)
+    {
+        string RandomCase(char charText) => _random.Next(0, 2) == 1 ?
+            charText.ToString().ToUpper() :
+            charText.ToString().ToLower();
+
+        return string.Join(",", text.Select(RandomCase));
+    }
 }
