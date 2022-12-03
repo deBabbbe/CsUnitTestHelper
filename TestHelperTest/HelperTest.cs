@@ -140,7 +140,7 @@ public class HelperTests
     [Test]
     public void ToRandomCaseTest()
     {
-        var text = Helper.GenerateRandomString();
+        var text = Helper.GenerateRandomString(100);
         Assert.AreNotEqual(text.ToRandomCase(), text.ToRandomCase());
     }
 }
