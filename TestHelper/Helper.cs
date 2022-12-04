@@ -11,12 +11,10 @@ public static class Helper
         string.Join("", Enumerable.Range(0, numberOfCharacters)
             .Select(_ => (char)_random.Next('A', 'z')));
 
-    public static List<T> GenerateRandomList<T>(Func<T> Generator, int numberOfElements)
-    {
-        return Enumerable.Range(0, numberOfElements)
+    public static List<T> GenerateRandomList<T>(Func<T> Generator, int numberOfElements) =>
+        Enumerable.Range(0, numberOfElements)
             .Select(_ => Generator())
             .ToList();
-    }
 
     public static bool GenerateRandomBool() => _random.Next(0, 2) == 1;
 
