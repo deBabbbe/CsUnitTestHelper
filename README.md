@@ -41,3 +41,7 @@ Returns the passed string in random case
 ### TempCreateDirectory(string path)
 
 Creates a directory and deletes it, when disposed
+
+### TempCreateFile(string path)
+
+Creates a file and deletes it, when disposed
