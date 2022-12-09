@@ -35,10 +35,11 @@ public static class Helper
 
     public static string ToRandomCase(this string text)
     {
-        string RandomCase(char charText) => RandomNumberGenerator.GetInt32(0, 2) == 1 ?
+        return string.Join(",", text.Select(ConvertCharToRandomCase));
+    }
+
+    private static string ConvertCharToRandomCase(char charText) =>
+        RandomNumberGenerator.GetInt32(0, 2) == 1 ?
             charText.ToString().ToUpper() :
             charText.ToString().ToLower();
-
-        return string.Join(",", text.Select(RandomCase));
-    }
 }
