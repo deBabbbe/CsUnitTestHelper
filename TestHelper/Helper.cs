@@ -7,7 +7,7 @@ public static class Helper
     private static Random _random = new Random();
 
     public static int GenerateRandomInt(int min = 1, int max = 10) =>
-        _random.Next(min, max + 1);
+        RandomNumberGenerator.GetInt32(min, max + 1);
 
     public static string GenerateRandomString(int numberOfCharacters = 10) =>
         string.Join("", Enumerable.Range(0, numberOfCharacters)
@@ -22,12 +22,12 @@ public static class Helper
 
     public static DateTime GenerateRandomDateTime()
     {
-        var year = _random.Next(1870, 2301);
-        var month = _random.Next(1, 13);
-        var day = _random.Next(1, 27);
-        var hour = _random.Next(0, 24);
-        var minute = _random.Next(0, 60);
-        var second = _random.Next(0, 60);
+        var year = RandomNumberGenerator.GetInt32(1870, 2301);
+        var month = RandomNumberGenerator.GetInt32(1, 13);
+        var day = RandomNumberGenerator.GetInt32(1, 27);
+        var hour = RandomNumberGenerator.GetInt32(0, 24);
+        var minute = RandomNumberGenerator.GetInt32(0, 60);
+        var second = RandomNumberGenerator.GetInt32(0, 60);
 
         return new DateTime(year, month, day, hour, minute, second);
     }
@@ -37,7 +37,7 @@ public static class Helper
 
     public static string ToRandomCase(this string text)
     {
-        string RandomCase(char charText) => _random.Next(0, 2) == 1 ?
+        string RandomCase(char charText) => RandomNumberGenerator.GetInt32(0, 2) == 1 ?
             charText.ToString().ToUpper() :
             charText.ToString().ToLower();
 

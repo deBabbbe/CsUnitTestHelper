@@ -39,7 +39,7 @@ public class HelperTests
     [Test]
     public void GenerateRandomStringTest_SingleChar()
     {
-        var count = 1;
+        const int count = 1;
         var result = Helper.GenerateRandomString(count);
         StringAssert.IsMatch($"[A-z]{{{count}}}", result);
     }
@@ -47,7 +47,7 @@ public class HelperTests
     [Test]
     public void GenerateRandomStringTest_HundertChars()
     {
-        var count = 100;
+        const int count = 100;
         var result = Helper.GenerateRandomString(count);
         StringAssert.IsMatch($"[A-z]{{{count}}}", result);
     }
