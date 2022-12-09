@@ -7,7 +7,7 @@ namespace TestHelperTest;
 public class TempCreateFileTests
 {
     [Test]
-    public void TempCreateFileTests_CreatesAndDeletesFolder()
+    public void TempCreateFileTests_CreatesAndDeletesFile()
     {
         var path = "%temp%/Temp.txt";
         FileAssert.DoesNotExist(path.ExpandEnv());
