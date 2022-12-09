@@ -1,4 +1,6 @@
-﻿namespace TestHelper;
+﻿using System.Security.Cryptography;
+
+namespace TestHelper;
 
 public static class Helper
 {
@@ -16,9 +18,9 @@ public static class Helper
             .Select(_ => Generator())
             .ToList();
 
-    public static bool GenerateRandomBool() => _random.Next(0, 2) == 1;
+    public static bool GenerateRandomBool() => RandomNumberGenerator.GetInt32(2) == 0;
 
-    public static DateTime GetGenerateRandomDateTime()
+    public static DateTime GenerateRandomDateTime()
     {
         var year = _random.Next(1870, 2301);
         var month = _random.Next(1, 13);

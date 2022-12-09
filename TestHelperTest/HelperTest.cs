@@ -113,9 +113,9 @@ public class HelperTests
     }
 
     [Test]
-    public void GetGenerateRandomDateTimeTest()
+    public void GenerateRandomDateTimeTest()
     {
-        var result = Helper.GetGenerateRandomDateTime();
+        var result = Helper.GenerateRandomDateTime();
 
         Assert.AreNotEqual(DateTime.MinValue, result);
         Assert.IsTrue(result.Year.IsInBetween(1870, 2300));
