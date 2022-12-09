@@ -4,14 +4,12 @@ namespace TestHelper;
 
 public static class Helper
 {
-    private static Random _random = new Random();
-
     public static int GenerateRandomInt(int min = 1, int max = 10) =>
         RandomNumberGenerator.GetInt32(min, max + 1);
 
     public static string GenerateRandomString(int numberOfCharacters = 10) =>
         string.Join("", Enumerable.Range(0, numberOfCharacters)
-            .Select(_ => (char)_random.Next('A', 'z')));
+            .Select(_ => (char)RandomNumberGenerator.GetInt32('A', 'z')));
 
     public static List<T> GenerateRandomList<T>(Func<T> Generator, int numberOfElements) =>
         Enumerable.Range(0, numberOfElements)
