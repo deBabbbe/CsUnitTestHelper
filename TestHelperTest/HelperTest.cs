@@ -4,11 +4,6 @@ namespace TestHelperTest;
 
 public class HelperTests
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
     public void GenerateRandomIntTest()
     {
@@ -24,8 +19,8 @@ public class HelperTests
     [Test]
     public void GenerateRandomIntTest_WithRange()
     {
-        var min = 100;
-        var max = 100000;
+        const int min = 100;
+        const int max = 100000;
         var results = Helper.GenerateRandomList(() => Helper.GenerateRandomInt(min, max), 100);
         results.ForEach(result =>
         {
@@ -69,7 +64,6 @@ public class HelperTests
     [Test]
     public void GenerateRandomListTest_SingleEntry()
     {
-        var count = Helper.GenerateRandomInt();
         var expected = new List<string> { "Test" };
         var result = Helper.GenerateRandomList(() => "Test", 1);
         CollectionAssert.AreEqual(expected, result);
@@ -78,7 +72,6 @@ public class HelperTests
     [Test]
     public void GenerateRandomListTest_SingleEntry_DifferentType()
     {
-        var count = Helper.GenerateRandomInt();
         var expected = new List<int> { 1 };
         var result = Helper.GenerateRandomList(() => 1, 1);
         CollectionAssert.AreEqual(expected, result);
@@ -87,7 +80,6 @@ public class HelperTests
     [Test]
     public void GenerateRandomListTest_FiveEntries()
     {
-        var count = Helper.GenerateRandomInt();
         var expected = new List<string> { "ABC", "ABC", "ABC", "ABC", "ABC" };
         var result = Helper.GenerateRandomList(() => "ABC", 5);
         CollectionAssert.AreEqual(expected, result);
