@@ -6,8 +6,8 @@ public class TempCreateFile : IDisposable
 
     public TempCreateFile(string path, string content)
     {
-        _path = path;
-        File.WriteAllText(path, content);
+        _path = path.ExpandEnv();
+        File.WriteAllText(_path, content);
     }
 
     public void Dispose()

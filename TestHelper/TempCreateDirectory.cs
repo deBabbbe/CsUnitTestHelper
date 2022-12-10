@@ -6,8 +6,8 @@ public class TempCreateDirectory : IDisposable
 
     public TempCreateDirectory(string path)
     {
-        _path = path;
-        Directory.CreateDirectory(path);
+        _path = path.ExpandEnv();
+        Directory.CreateDirectory(_path);
     }
 
     public void Dispose()
