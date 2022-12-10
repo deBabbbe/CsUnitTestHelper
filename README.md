@@ -42,6 +42,10 @@ Returns the passed string in random case
 
 Creates a directory and deletes it, when disposed
 
-### TempCreateFile(string path)
+### TempCreateFile(string path, string content)
 
 Creates a file and deletes it, when disposed
+
+### TempCreateFileInFolder(string path, string content)
+
+Creates a file in a folder and deletes both, when disposed
