@@ -56,3 +56,15 @@ Creates a file in a folder and deletes both, when disposed
 ### TempSetEnvVar(string var, string value)
 
 Sets a env variable to value and deletes it, when disposed
+
+### T AnyOne<T>(this IEnumerable<T> src)
+
+Returns any element from a IEnumerable
+
+### T AnyOne<T>(this IEnumerable<T> src, T except)
+
+Returns any element from a IEnumerable, except of passed element
+
+### T AnyOne<T>(this IEnumerable<T> src, IEnumerable<T> except)
+
+Returns any element from a IEnumerable, except of passed elements

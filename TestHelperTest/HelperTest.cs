@@ -1,3 +1,6 @@
+using System.Collections.Immutable;
+using System.Security.Cryptography;
+using ClassExtensions;
 using TestHelper;
 
 namespace TestHelperTest;
@@ -26,6 +29,19 @@ public class HelperTests
         {
             Assert.IsTrue(result.IsInBetween(min, max));
             Assert.AreNotEqual(Helper.GenerateRandomInt(), result);
+        });
+    }
+
+    [Test]
+    public void GenerateRandomIntTest_DefaultRange()
+    {
+        const int min = 100;
+        const int max = 100000;
+        var results = Helper.GenerateRandomList(() => Helper.GenerateRandomInt(min, max));
+        results.ForEach(result =>
+        {
+            Assert.IsTrue(result.IsInBetween(min, max));
+            Assert.AreEqual(10, results.Count);
         });
     }
 
@@ -134,5 +150,43 @@ public class HelperTests
     {
         var text = Helper.GenerateRandomString(100);
         Assert.AreNotEqual(text.ToRandomCase(), text.ToRandomCase());
+    }
+
+    [Test]
+    public void AnyOneTest()
+    {
+        var list = Helper.GenerateRandomList(() => Guid.NewGuid().ToString());
+        CollectionAssert.Contains(list, list.AnyOne());
+    }
+
+    [Test]
+    public void AnyOneTest_Except()
+    {
+        ImmutableList<string> list = Helper.GenerateRandomList(() => Guid.NewGuid().ToString(), 100).ToImmutableList();
+        var idx = RandomNumberGenerator.GetInt32(0, list.Count());
+
+        300.Times(_ =>
+        {
+            var except = list[idx];
+            var entry = list.AnyOne(except);
+            CollectionAssert.Contains(list, entry);
+            Assert.AreNotEqual(except, entry);
+        });
+    }
+
+    [Test]
+    public void AnyOneTest_ExceptList()
+    {
+        var list = Helper.GenerateRandomList(() => Guid.NewGuid().ToString(), 100);
+        var idx1 = RandomNumberGenerator.GetInt32(0, list.Count());
+        var idx2 = RandomNumberGenerator.GetInt32(0, list.Count());
+
+        300.Times(_ =>
+        {
+            var entry = list.AnyOne(new[] { list[idx1], list[idx2] });
+            CollectionAssert.Contains(list, entry);
+            Assert.AreNotEqual(list[idx1], entry);
+            Assert.AreNotEqual(list[idx2], entry);
+        });
     }
 }

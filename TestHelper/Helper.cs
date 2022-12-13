@@ -11,7 +11,7 @@ public static class Helper
         string.Join("", Enumerable.Range(0, numberOfCharacters)
             .Select(_ => (char)RandomNumberGenerator.GetInt32('A', 'z')));
 
-    public static List<T> GenerateRandomList<T>(Func<T> Generator, int numberOfElements) =>
+    public static List<T> GenerateRandomList<T>(Func<T> Generator, int numberOfElements = 10) =>
         Enumerable.Range(0, numberOfElements)
             .Select(_ => Generator())
             .ToList();
@@ -36,6 +36,18 @@ public static class Helper
     public static string ToRandomCase(this string text)
     {
         return string.Join(",", text.Select(ConvertCharToRandomCase));
+    }
+
+    public static T AnyOne<T>(this IEnumerable<T> src) where T : class =>
+        src.AnyOne<T>((T)null);
+
+    public static T AnyOne<T>(this IEnumerable<T> src, T except) where T : class =>
+        src.AnyOne(new[] { except });
+
+    public static T AnyOne<T>(this IEnumerable<T> src, IEnumerable<T> except) where T : class
+    {
+        var idx = RandomNumberGenerator.GetInt32(0, src.Count() - except.Count() - 1);
+        return src.Where(s => !except.Contains(s)).ElementAt(idx);
     }
 
     private static string ConvertCharToRandomCase(char charText) =>
