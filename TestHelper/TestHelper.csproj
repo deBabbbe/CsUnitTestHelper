@@ -4,7 +4,7 @@
     <PackageId>CsUnitTestHelper</PackageId>
     <Version>0.0.4</Version>
     <Authors>deBabbe</Authors>
-    <Company></Company>
+    <Companyy/>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ClassExtensions" Version="0.0.1" />
+    <PackageReference Include="ClassExtensions" Version="0.0.2" />
   </ItemGroup>
 
 </Project>
