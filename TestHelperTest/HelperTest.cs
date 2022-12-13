@@ -207,10 +207,10 @@ public class HelperTests
     }
 
     [Test]
-    public void PopTest_DifferentList()
+    public void PopTest_ListWithDifferentType()
     {
-        var expected = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
-        var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+        var expected = new List<int> { 1, 2, 3, 4 };
+        var list = new List<int> { 1, 2, 3, 4 };
         list.Count.Times(t =>
         {
             var result = list.Pop();
@@ -220,7 +220,7 @@ public class HelperTests
     }
 
     [Test]
-    public void PopTest_OnEmptyList()
+    public void PopTest_EmptyList()
     {
         Assert.Throws<ArgumentOutOfRangeException>(() => new List<string>().Pop());
     }
@@ -239,10 +239,10 @@ public class HelperTests
     }
 
     [Test]
-    public void ShiftTest_DifferentList()
+    public void ShiftTest_ListWithDifferentType()
     {
-        var expected = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
-        var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+        var expected = new List<int> { 1, 2, 3, 4 };
+        var list = new List<int> { 1, 2, 3, 4 };
         list.Count.Times(t =>
         {
             var result = list.Shift();
@@ -252,8 +252,41 @@ public class HelperTests
     }
 
     [Test]
-    public void ShiftTest_OnEmptyList()
+    public void ShiftTest_EmptyList()
     {
         Assert.Throws<ArgumentOutOfRangeException>(() => new List<string>().Shift());
+    }
+
+    [Test]
+    public void UnshiftTest()
+    {
+        var expected = new List<string> { "a", "b", "c", "d" };
+        var list = new List<string> { "b", "c", "d" };
+
+        list.Unshift("a");
+
+        CollectionAssert.AreEqual(expected, list.ToList());
+    }
+
+    [Test]
+    public void UnshiftTest_ListWithDifferentType()
+    {
+        var expected = new List<int> { 1, 2, 3, 4 };
+        var list = new List<int> { 2, 3, 4 };
+
+        list.Unshift(1);
+
+        CollectionAssert.AreEqual(expected, list.ToList());
+    }
+
+    [Test]
+    public void UnshiftTest_EmptyList()
+    {
+        var expected = new List<string> { "A" };
+        var actual = new List<string>();
+
+        actual.Unshift("A");
+
+        CollectionAssert.AreEqual(expected, actual);
     }
 }

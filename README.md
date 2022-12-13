@@ -76,3 +76,7 @@ Returns the last element of the list and removes it from the list
 ### T Shift<T>(this IList<T> src)
 
 Returns the first element of the list and removes it from the list
+
+### void Unshift<T>(this IList<T> src, T toAdd)
+
+Adds toAdd at the first position of src

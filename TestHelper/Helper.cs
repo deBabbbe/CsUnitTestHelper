@@ -65,6 +65,8 @@ public static class Helper
         return result;
     }
 
+    public static void Unshift<T>(this IList<T> src, T toAdd) => src.Insert(0, toAdd);
+
     private static string ConvertCharToRandomCase(char charText) =>
         RandomNumberGenerator.GetInt32(0, 2) == 1 ?
             charText.ToString().ToUpper() :
