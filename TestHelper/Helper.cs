@@ -50,6 +50,14 @@ public static class Helper
         return src.Where(s => !except.Contains(s)).ElementAt(idx);
     }
 
+    public static T Pop<T>(this IList<T> src)
+    {
+        var idx = src.Count() - 1;
+        var result = src.ElementAt(idx);
+        src.RemoveAt(idx);
+        return result;
+    }
+
     private static string ConvertCharToRandomCase(char charText) =>
         RandomNumberGenerator.GetInt32(0, 2) == 1 ?
             charText.ToString().ToUpper() :

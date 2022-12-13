@@ -192,4 +192,36 @@ public class HelperTests
             Assert.AreNotEqual(list[idx2], entry);
         });
     }
+
+    [Test]
+    public void PopTest()
+    {
+        var expected = new List<string> { "a", "b", "c", "d" };
+        var list = new List<string> { "a", "b", "c", "d" };
+        list.Count.Times(t =>
+        {
+            var result = list.Pop();
+            Assert.AreEqual(expected[expected.Count - t - 1], result);
+            Assert.AreEqual(expected.Count - (t + 1), list.Count);
+        });
+    }
+
+    [Test]
+    public void PopTest_DifferentList()
+    {
+        var expected = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+        var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+        list.Count.Times(t =>
+        {
+            var result = list.Pop();
+            Assert.AreEqual(expected[expected.Count - t - 1], result);
+            Assert.AreEqual(expected.Count - (t + 1), list.Count);
+        });
+    }
+
+    [Test]
+    public void PopTest_OnEmptyList()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => new List<string>().Pop());
+    }
 }

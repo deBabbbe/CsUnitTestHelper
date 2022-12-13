@@ -68,3 +68,7 @@ Returns any element from a IEnumerable, except of passed element
 ### T AnyOne<T>(this IEnumerable<T> src, IEnumerable<T> except)
 
 Returns any element from a IEnumerable, except of passed elements
+
+### T Pop<T>(this IList<T> src)
+
+Returns last element of the list and removes it from the list
