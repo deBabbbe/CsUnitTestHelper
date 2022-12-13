@@ -52,3 +52,7 @@ Creates a file and deletes it, when disposed
 ### TempCreateFileInFolder(string path, string content)
 
 Creates a file in a folder and deletes both, when disposed
+
+### TempSetEnvVar(string var, string value)
+
+Sets a env variable to value and deletes it, when disposed
