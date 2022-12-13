@@ -1,8 +1,10 @@
+using ClassExtensions;
+
 namespace TestHelper;
 
 public class TempCreateFile : IDisposable
 {
-    private string _path;
+    private readonly string _path;
 
     public TempCreateFile(string path, string content)
     {

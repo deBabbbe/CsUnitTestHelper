@@ -11,4 +11,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ClassExtensions" Version="0.0.1" />
+  </ItemGroup>
+
 </Project>

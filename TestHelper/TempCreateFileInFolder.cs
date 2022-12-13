@@ -2,20 +2,17 @@ namespace TestHelper;
 
 public class TempCreateFileInFolder : IDisposable
 {
-    private string _path;
-    private TempCreateDirectory _folder;
+    private List<IDisposable> _toDispose = new List<IDisposable>();
 
     public TempCreateFileInFolder(string path, string content)
     {
-        _path = path;
-        using (_folder = new TempCreateDirectory(Path.GetDirectoryName(path)))
-        {
-                File.WriteAllText(path, content);
-        }
+        _toDispose.Add(new TempCreateDirectory(Path.GetDirectoryName(path)));
+        _toDispose.Add(new TempCreateFile(path, content));
     }
 
     public void Dispose()
     {
-        File.Delete(_path);
+        _toDispose.Reverse();
+        _toDispose.ForEach(d => d.Dispose());
     }
 }
