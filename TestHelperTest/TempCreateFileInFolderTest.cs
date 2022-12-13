@@ -11,7 +11,7 @@ public class TempCreateFileInFolderTests
     {
         var folder = "%temp%/Test/Dings";
         var path = $"{folder}/Temp.txt";
-        // FileAssert.DoesNotExist(path.ExpandEnv());
+        FileAssert.DoesNotExist(path.ExpandEnv());
         var expectedText = Guid.NewGuid().ToString();
         using (new TempCreateFileInFolder(path, expectedText))
         {
@@ -20,5 +20,11 @@ public class TempCreateFileInFolderTests
         }
         FileAssert.DoesNotExist(path.ExpandEnv());
         DirectoryAssert.DoesNotExist(folder.ExpandEnv());
+    }
+
+    [Test]
+    public void TempCreateFileInFolderTests_PassedPathIsNull()
+    {
+        Assert.Throws<ArgumentNullException>(() => new TempCreateFileInFolder(null, "irrelevant"));
     }
 }
