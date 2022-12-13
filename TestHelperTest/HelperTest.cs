@@ -156,7 +156,10 @@ public class HelperTests
     public void AnyOneTest()
     {
         var list = Helper.GenerateRandomList(() => Guid.NewGuid().ToString());
-        CollectionAssert.Contains(list, list.AnyOne());
+        300.Times(_ =>
+        {
+            CollectionAssert.Contains(list, list.AnyOne());
+        });
     }
 
     [Test]
