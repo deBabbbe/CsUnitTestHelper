@@ -2,7 +2,7 @@ namespace TestHelper;
 
 public class TempCreateFileInFolder : IDisposable
 {
-    private List<IDisposable> _toDispose = new List<IDisposable>();
+    private readonly List<IDisposable> _toDispose = new List<IDisposable>();
 
     public TempCreateFileInFolder(string path, string content)
     {

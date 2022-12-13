@@ -9,7 +9,7 @@ public class TempCreateDirectoryTests
     [Test]
     public void TempCreateDirectoryTests_CreatesAndDeletesFolder()
     {
-        var path = "%temp%/Dings";
+        const string path = "%temp%/Dings";
         DirectoryAssert.DoesNotExist(path.ExpandEnv());
         using (new TempCreateDirectory(path))
         {
