@@ -9,10 +9,12 @@ public class TempCreateFileInFolderTests
     [Test]
     public void TempCreateFileInFolderTests_CreatesAndDeletesFileInFolder()
     {
-        const string folder = "%temp%/Test/Dings";
+        const string folder = "%test%/Test/Dings";
         const string path = $"{folder}/Temp.txt";
         FileAssert.DoesNotExist(path.ExpandEnv());
         var expectedText = Guid.NewGuid().ToString();
+
+        using (new TempSetEnvVar("%test%", "."))
         using (new TempCreateFileInFolder(path, expectedText))
         {
             FileAssert.Exists(path.ExpandEnv(), expectedText);
