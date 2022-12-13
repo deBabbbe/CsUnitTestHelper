@@ -9,7 +9,7 @@ public class TempSetEnvVarTest
     [Test]
     public void TempSetEnvVarTest_SetsEnvVar()
     {
-        var name = "Schorsch";
+        const string name = "Schorsch";
         var value = Guid.NewGuid().ToString();
 
         Assert.AreEqual($"%{name}%".ExpandEnv(), $"%{name}%");

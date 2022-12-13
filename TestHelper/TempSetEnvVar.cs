@@ -4,16 +4,16 @@ namespace TestHelper;
 
 public class TempSetEnvVar: IDisposable
 {
-    private string _var;
+    private readonly string _envVarName;
 
     public TempSetEnvVar(string var, string value)
     {
-        _var = var;
+        _envVarName = var;
         Environment.SetEnvironmentVariable(var, value);
     }
 
     public void Dispose()
     {
-        Environment.SetEnvironmentVariable(_var, null);
+        Environment.SetEnvironmentVariable(_envVarName, null);
     }
 }
