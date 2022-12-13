@@ -25,6 +25,12 @@ public class TempCreateFileInFolderTests
     [Test]
     public void TempCreateFileInFolderTests_PassedPathIsNull()
     {
-        Assert.Throws<ArgumentNullException>(() => new TempCreateFileInFolder(null, "irrelevant"));
+        Assert.Throws<ArgumentNullException>(() => new TempCreateFileInFolder(null!, "irrelevant"));
+    }
+
+    [Test]
+    public void TempCreateFileInFolderTests_PassedPathCannotBeExtracted()
+    {
+        Assert.Throws<ArgumentException>(() => new TempCreateFileInFolder(Guid.NewGuid().ToString(), "irrelevant"));
     }
 }
