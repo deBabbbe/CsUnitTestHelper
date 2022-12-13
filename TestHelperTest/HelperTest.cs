@@ -224,4 +224,36 @@ public class HelperTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() => new List<string>().Pop());
     }
+
+    [Test]
+    public void ShiftTest()
+    {
+        var expected = new List<string> { "a", "b", "c", "d" };
+        var list = new List<string> { "a", "b", "c", "d" };
+        list.Count.Times(t =>
+        {
+            var result = list.Shift();
+            Assert.AreEqual(expected[t], result);
+            Assert.AreEqual(expected.Count - (t + 1), list.Count);
+        });
+    }
+
+    [Test]
+    public void ShiftTest_DifferentList()
+    {
+        var expected = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+        var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+        list.Count.Times(t =>
+        {
+            var result = list.Shift();
+            Assert.AreEqual(expected[t], result);
+            Assert.AreEqual(expected.Count - (t + 1), list.Count);
+        });
+    }
+
+    [Test]
+    public void ShiftTest_OnEmptyList()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => new List<string>().Shift());
+    }
 }

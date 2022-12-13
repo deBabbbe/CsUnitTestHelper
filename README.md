@@ -71,4 +71,8 @@ Returns any element from a IEnumerable, except of passed elements
 
 ### T Pop<T>(this IList<T> src)
 
-Returns last element of the list and removes it from the list
+Returns the last element of the list and removes it from the list
+
+### T Shift<T>(this IList<T> src)
+
+Returns the first element of the list and removes it from the list

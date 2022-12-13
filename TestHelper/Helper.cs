@@ -58,6 +58,13 @@ public static class Helper
         return result;
     }
 
+    public static T Shift<T>(this IList<T> src)
+    {
+        var result = src.ElementAt(0);
+        src.RemoveAt(0);
+        return result;
+    }
+
     private static string ConvertCharToRandomCase(char charText) =>
         RandomNumberGenerator.GetInt32(0, 2) == 1 ?
             charText.ToString().ToUpper() :
