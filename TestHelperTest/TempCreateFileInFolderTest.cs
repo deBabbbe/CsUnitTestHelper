@@ -13,10 +13,11 @@ public class TempCreateFileInFolderTests
         const string path = $"{folder}/Temp.txt";
         FileAssert.DoesNotExist(path.ExpandEnv());
         var expectedText = Guid.NewGuid().ToString();
+        using(new TempSetEnvVar("temp", "."))
         using (new TempCreateFileInFolder(path, expectedText))
         {
             FileAssert.Exists(path.ExpandEnv(), expectedText);
-            Assert.AreEqual(expectedText, File.ReadAllText(path));
+            Assert.AreEqual(expectedText, File.ReadAllText(path.ExpandEnv()));
         }
         FileAssert.DoesNotExist(path.ExpandEnv());
         DirectoryAssert.DoesNotExist(folder.ExpandEnv());
