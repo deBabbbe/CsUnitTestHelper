@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>CsUnitTestHelper</PackageId>
-    <Version>0.0.3</Version>
+    <Version>0.0.5</Version>
     <Authors>deBabbe</Authors>
     <Companyy/>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
