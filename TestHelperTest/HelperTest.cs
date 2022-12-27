@@ -135,4 +135,17 @@ public class HelperTests
         var text = Helper.GenerateRandomString(100);
         Assert.AreNotEqual(text.ToRandomCase(), text.ToRandomCase());
     }
+
+    [TestCase(5, 1, 10, ExpectedResult = true)]
+    [TestCase(4, 0, 10, ExpectedResult = true)]
+    [TestCase(3, -10, 10, ExpectedResult = true)]
+    [TestCase(2, 1, 3, ExpectedResult = true)]
+    [TestCase(1, 1, 1, ExpectedResult = true)]
+    [TestCase(0, 1, 1, ExpectedResult = false)]
+    [TestCase(-1, 0, 1, ExpectedResult = false)]
+    [TestCase(7, 10, 5, ExpectedResult = false)]
+    public bool IsInBetweenTest(int value, int min, int max)
+    {
+        return value.IsInBetween(min, max);
+    }
 }

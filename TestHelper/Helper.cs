@@ -38,6 +38,21 @@ public static class Helper
         return string.Join(",", text.Select(ConvertCharToRandomCase));
     }
 
+    public static bool IsInBetween(this int value, int min, int max)
+    {
+        if (min > value)
+        {
+            Console.WriteLine($"{min} is bigger than {value}");
+            return false;
+        }
+        if (max < value)
+        {
+            Console.WriteLine($"{max} is smaller than {value}");
+            return false;
+        }
+        return true;
+    }
+
     private static string ConvertCharToRandomCase(char charText) =>
         RandomNumberGenerator.GetInt32(0, 2) == 1 ?
             charText.ToString().ToUpper() :
