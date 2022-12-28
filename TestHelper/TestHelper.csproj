@@ -6,7 +6,6 @@
     <Authors>deBabbe</Authors>
     <Companyy/>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <TargetFramework>net7.0</TargetFramework>
     <RepositoryUrl>https://github.com/deBabbbe/CsUnitTestHelper.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/deBabbbe/CsUnitTestHelper</PackageProjectUrl>
     <RepositoryType>git</RepositoryType> 
