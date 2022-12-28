@@ -55,7 +55,7 @@ Creates a file in a folder and deletes both, when disposed
 
 ### TempSetEnvVar(string var, string value)
 
-Sets a env variable to value and deletes it, when disposed
+Sets a env variable to value and sets it back to the value before, when disposed
 
 ### static bool IsInBetween(this int value, int min, int max)
 
