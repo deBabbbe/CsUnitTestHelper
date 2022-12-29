@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PackageId>CsUnitTestHelper</PackageId>
     <Version>0.0.7</Version>
     <Authors>deBabbe</Authors>
-    <Companyy/>
+    <Companyy />
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/deBabbbe/CsUnitTestHelper.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/deBabbbe/CsUnitTestHelper</PackageProjectUrl>
@@ -13,7 +13,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <!--<PackageReadmeFile>..\README.md</PackageReadmeFile>-->
   </PropertyGroup>
 
   <ItemGroup>
