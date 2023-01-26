@@ -53,9 +53,14 @@ public static class Helper
         return true;
     }
 
-    public static bool HasAttribute<T>(this T @class, Type attribute) where T : class
+    public static bool HasAttribute<T>(this T _, Type attribute) where T : class =>
+        Attribute.GetCustomAttribute(typeof(T), attribute) != null;
+
+    public static bool HasPropertyWithAttribute<T>(this T _, string propertyName, Type attribute) where T : class
     {
-        return Attribute.GetCustomAttribute(typeof(T), attribute) != null;
+        var property = typeof(T).GetProperty(propertyName);
+        if (property == null) return false;
+        return Attribute.IsDefined(property, attribute);
     }
 
     private static string ConvertCharToRandomCase(char charText) =>

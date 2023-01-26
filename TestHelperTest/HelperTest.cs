@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using TestHelper;
 
 namespace TestHelperTest;
@@ -153,13 +154,32 @@ public class HelperTests
     [TestCase(typeof(DescriptionAttribute), true)]
     [TestCase(typeof(TestAttribute), false)]
     [TestCase(typeof(TestActionAttribute), false)]
-    public void HasAttributeTest(Type type, bool expected)
+    public void HasAttributeTest_Class(Type type, bool expected)
     {
         Assert.AreEqual(expected, new ClassWithAttribute().HasAttribute(type));
+    }
+
+    [TestCase(typeof(ObsoleteAttribute), true)]
+    [TestCase(typeof(ConditionalAttribute), false)]
+    [Obsolete]
+    public void HasAttributeTest_Property(Type type, bool expected)
+    {
+        Assert.AreEqual(expected, new ClassWithAttribute()
+            .HasPropertyWithAttribute(nameof(ClassWithAttribute.MyProperty), type));
+    }
+
+    [Test]
+    public void HasAttributeTest_Property_DoesNotExist()
+    {
+        Assert.IsFalse(new ClassWithAttribute()
+            .HasPropertyWithAttribute("NonExisting", typeof(ObsoleteAttribute)));
     }
 
     [Ignore("Ignore text")]
     [Description("I dont know")]
     private class ClassWithAttribute
-    { }
+    {
+        [Obsolete]
+        public int MyProperty { get; set; }
+    }
 }
