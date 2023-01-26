@@ -150,37 +150,35 @@ public class HelperTests
         return value.IsInBetween(min, max);
     }
 
-    [TestCase(typeof(IgnoreAttribute), true)]
-    [TestCase(typeof(DescriptionAttribute), true)]
-    [TestCase(typeof(TestAttribute), false)]
-    [TestCase(typeof(TestActionAttribute), false)]
-    [TestCase(typeof(ObsoleteAttribute), false)]
-    [TestCase(typeof(ConditionalAttribute), false)]
-    public void HasAttributeTest_Class(Type type, bool expected)
+    [TestCase(typeof(IgnoreAttribute), ExpectedResult = true)]
+    [TestCase(typeof(DescriptionAttribute), ExpectedResult = true)]
+    [TestCase(typeof(TestAttribute), ExpectedResult = false)]
+    [TestCase(typeof(TestActionAttribute), ExpectedResult = false)]
+    [TestCase(typeof(ObsoleteAttribute), ExpectedResult = false)]
+    [TestCase(typeof(ConditionalAttribute), ExpectedResult = false)]
+    public bool HasAttributeTest_Class(Type type)
     {
-        Assert.AreEqual(expected, new ClassWithAttribute().HasAttribute(type));
+        return new ClassWithAttribute().HasAttribute(type);
     }
 
-    [TestCase(typeof(IgnoreAttribute), false)]
-    [TestCase(typeof(DescriptionAttribute), false)]
-    [TestCase(typeof(TestAttribute), false)]
-    [TestCase(typeof(TestActionAttribute), false)]
-    [TestCase(typeof(ObsoleteAttribute), true)]
-    [TestCase(typeof(ConditionalAttribute), false)]
+    [TestCase(typeof(IgnoreAttribute), ExpectedResult = false)]
+    [TestCase(typeof(DescriptionAttribute), ExpectedResult = false)]
+    [TestCase(typeof(TestAttribute), ExpectedResult = false)]
+    [TestCase(typeof(TestActionAttribute), ExpectedResult = false)]
+    [TestCase(typeof(ObsoleteAttribute), ExpectedResult = true)]
+    [TestCase(typeof(ConditionalAttribute), ExpectedResult = false)]
     [Obsolete]
-    public void HasAttributeTest_Property(Type type, bool expected)
+    public bool HasAttributeTest_Property(Type type)
     {
-        Assert.AreEqual(expected, new ClassWithAttribute()
-            .HasPropertyWithAttribute(nameof(ClassWithAttribute.MyProperty), type));
-        Assert.AreEqual(expected, new ClassWithAttribute()
-            .HasPropertyWithAttribute("MyProperty", type));
+        return new ClassWithAttribute()
+            .HasPropertyWithAttribute(nameof(ClassWithAttribute.MyProperty), type);
     }
 
-    [Test]
-    public void HasAttributeTest_Property_DoesNotExist()
+    [Test(ExpectedResult = false)]
+    public bool HasAttributeTest_Property_DoesNotExist()
     {
-        Assert.IsFalse(new ClassWithAttribute()
-            .HasPropertyWithAttribute("NonExisting", typeof(ObsoleteAttribute)));
+        return new ClassWithAttribute()
+            .HasPropertyWithAttribute("NonExisting", typeof(ObsoleteAttribute));
     }
 
     [Ignore("Ignore text")]
