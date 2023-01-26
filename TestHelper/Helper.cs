@@ -53,6 +53,11 @@ public static class Helper
         return true;
     }
 
+    public static bool HasAttribute<T>(this T @class, Type attribute) where T : class
+    {
+        return Attribute.GetCustomAttribute(typeof(T), attribute) != null;
+    }
+
     private static string ConvertCharToRandomCase(char charText) =>
         RandomNumberGenerator.GetInt32(0, 2) == 1 ?
             charText.ToString().ToUpper() :

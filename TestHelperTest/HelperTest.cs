@@ -148,4 +148,18 @@ public class HelperTests
     {
         return value.IsInBetween(min, max);
     }
+
+    [TestCase(typeof(IgnoreAttribute), true)]
+    [TestCase(typeof(DescriptionAttribute), true)]
+    [TestCase(typeof(TestAttribute), false)]
+    [TestCase(typeof(TestActionAttribute), false)]
+    public void HasAttributeTest(Type type, bool expected)
+    {
+        Assert.AreEqual(expected, new ClassWithAttribute().HasAttribute(type));
+    }
+
+    [Ignore("Ignore text")]
+    [Description("I dont know")]
+    private class ClassWithAttribute
+    { }
 }
