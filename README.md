@@ -63,4 +63,4 @@ Checks if value is in between of min and max and logs message to console, if not
 
 ### static bool HasAttribute<T>(this T @class, Type attribute) where T : class
 
-Return true, if a class contains the attribute. Otherwise false.
+Returns true, if a class contains the attribute. Otherwise false.
