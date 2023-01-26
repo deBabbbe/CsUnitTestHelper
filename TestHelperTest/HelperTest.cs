@@ -166,6 +166,8 @@ public class HelperTests
     {
         Assert.AreEqual(expected, new ClassWithAttribute()
             .HasPropertyWithAttribute(nameof(ClassWithAttribute.MyProperty), type));
+        Assert.AreEqual(expected, new ClassWithAttribute()
+            .HasPropertyWithAttribute("MyProperty", type));
     }
 
     [Test]
