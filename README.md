@@ -61,11 +61,11 @@ Sets a env variable to value and sets it back to the value before, when disposed
 
 Checks if value is in between of min and max and logs message to console, if not
 
-### static bool HasAttribute<T>(this T @class, Type attribute) where T : class
+### static bool HasAttribute\<T\>(this T @class, Type attribute) where T : class
 
 Returns true, if a class contains the attribute. Otherwise false.
 
-### static bool HasPropertyWithAttribute<T>(this T \_, string propertyName, Type attribute)
+### static bool HasPropertyWithAttribute\<T\>(this T \_, string propertyName, Type attribute)
 
 Retruns ture if a property of a class contains the attribute.
 If the property does not exist, or the property does not contains the attribute, it return false.
