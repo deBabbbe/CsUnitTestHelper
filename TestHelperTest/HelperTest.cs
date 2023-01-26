@@ -161,7 +161,6 @@ public class HelperTests
         Assert.AreEqual(expected, new ClassWithAttribute().HasAttribute(type));
     }
 
-
     [TestCase(typeof(IgnoreAttribute), false)]
     [TestCase(typeof(DescriptionAttribute), false)]
     [TestCase(typeof(TestAttribute), false)]
