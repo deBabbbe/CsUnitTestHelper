@@ -59,7 +59,10 @@ public static class Helper
     public static bool HasPropertyWithAttribute<T>(this T _, string propertyName, Type attribute) where T : class
     {
         var property = typeof(T).GetProperty(propertyName);
-        if (property == null) return false;
+        if (property == null)
+        {
+            return false;
+        }
         return Attribute.IsDefined(property, attribute);
     }
 
