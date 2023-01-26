@@ -161,14 +161,15 @@ public class HelperTests
         return new ClassWithAttribute().HasAttribute(type);
     }
 
+    [TestCase(typeof(ObsoleteAttribute), ExpectedResult = true)]
+    [TestCase(typeof(MyAttribute), ExpectedResult = true)]
     [TestCase(typeof(IgnoreAttribute), ExpectedResult = false)]
     [TestCase(typeof(DescriptionAttribute), ExpectedResult = false)]
     [TestCase(typeof(TestAttribute), ExpectedResult = false)]
     [TestCase(typeof(TestActionAttribute), ExpectedResult = false)]
-    [TestCase(typeof(ObsoleteAttribute), ExpectedResult = true)]
     [TestCase(typeof(ConditionalAttribute), ExpectedResult = false)]
     [Obsolete]
-    public bool HasAttributeTest_Property(Type type)
+    public bool HasPropertyWithAttributeTest_Property(Type type)
     {
         return new ClassWithAttribute()
             .HasPropertyWithAttribute(nameof(ClassWithAttribute.MyProperty), type);
@@ -186,6 +187,10 @@ public class HelperTests
     private class ClassWithAttribute
     {
         [Obsolete]
+        [MyAttribute]
         public int MyProperty { get; set; }
     }
+
+    private class MyAttribute : Attribute
+    { }
 }
