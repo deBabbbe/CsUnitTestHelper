@@ -61,7 +61,7 @@ Sets a env variable to value and sets it back to the value before, when disposed
 
 Checks if value is in between of min and max and logs message to console, if not
 
-### static bool HasAttribute\<T\>(this T @class, Type attribute) where T : class
+### static bool HasAttribute\<T\>(this T \_, Type attribute) where T : class
 
 Returns true, if a class contains the attribute. Otherwise false.
 
