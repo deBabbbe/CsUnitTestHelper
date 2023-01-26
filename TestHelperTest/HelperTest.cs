@@ -154,11 +154,18 @@ public class HelperTests
     [TestCase(typeof(DescriptionAttribute), true)]
     [TestCase(typeof(TestAttribute), false)]
     [TestCase(typeof(TestActionAttribute), false)]
+    [TestCase(typeof(ObsoleteAttribute), false)]
+    [TestCase(typeof(ConditionalAttribute), false)]
     public void HasAttributeTest_Class(Type type, bool expected)
     {
         Assert.AreEqual(expected, new ClassWithAttribute().HasAttribute(type));
     }
 
+
+    [TestCase(typeof(IgnoreAttribute), false)]
+    [TestCase(typeof(DescriptionAttribute), false)]
+    [TestCase(typeof(TestAttribute), false)]
+    [TestCase(typeof(TestActionAttribute), false)]
     [TestCase(typeof(ObsoleteAttribute), true)]
     [TestCase(typeof(ConditionalAttribute), false)]
     [Obsolete]
