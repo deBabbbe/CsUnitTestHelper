@@ -57,23 +57,19 @@ public static class Helper
             charText.ToString().ToUpper() :
             charText.ToString().ToLower();
 
-    private static bool IsValueSmallerMaxValue(int value, int max)
-    {
-        if (value > max)
-        {
-            Console.WriteLine($"{max} is smaller than {value}");
-            return false;
-        }
-        return true;
-    }
+    private static bool IsValueSmallerMaxValue(int value, int max) =>
+        LogByCondition(value > max, $"{max} is smaller than {value}");
 
-    private static bool IsValueBiggerMinValue(int value, int min)
+    private static bool IsValueBiggerMinValue(int value, int min) =>
+        LogByCondition(value < min, $"{min} is bigger than {value}");
+
+
+    private static bool LogByCondition(bool condition, string logText)
     {
-        if (value < min)
+        if (condition)
         {
-            Console.WriteLine($"{min} is bigger than {value}");
-            return false;
+            Console.WriteLine(logText);
         }
-        return true;
+        return !condition;
     }
 }
