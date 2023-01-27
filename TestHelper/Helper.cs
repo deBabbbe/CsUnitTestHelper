@@ -31,7 +31,7 @@ public static class Helper
         $"{prefix}{Guid.NewGuid().ToString()}";
 
     public static string ToRandomCase(this string text) =>
-        string.Join(",", text.Select(ConvertCharToRandomCase));
+        string.Join("", text.Select(ConvertCharToRandomCase));
 
     public static bool IsInBetween(this int value, int min, int max) =>
         IsValueBiggerMinValue(value, min) && IsValueSmallerMaxValue(value, max);

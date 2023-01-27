@@ -138,6 +138,12 @@ public class HelperTests
         Assert.AreNotEqual(text.ToRandomCase(), text.ToRandomCase());
     }
 
+    [Test]
+    public void ToRandomCaseTest_CheckByRegex()
+    {
+        StringAssert.IsMatch("[aA][bB][cC]", "ABC".ToRandomCase());
+    }
+
     [TestCase(5, 1, 10, ExpectedResult = true)]
     [TestCase(4, 0, 10, ExpectedResult = true)]
     [TestCase(3, -10, 10, ExpectedResult = true)]
