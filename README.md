@@ -57,6 +57,10 @@ Creates a file in a folder and deletes both, when disposed
 
 Sets a env variable to value and sets it back to the value before, when disposed
 
+### TempSetAppSetting(string key, string value)
+
+Sets a AppSetting to value and sets it back to initial state, when disposed
+
 ### static bool IsInBetween(this int value, int min, int max)
 
 Checks if value is in between of min and max and logs message to console, if not
