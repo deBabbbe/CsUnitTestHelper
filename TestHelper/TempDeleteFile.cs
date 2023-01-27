@@ -14,8 +14,5 @@ public class TempDeleteFile : IDisposable
         File.Delete(_filePath);
     }
 
-    public void Dispose()
-    {
-        File.WriteAllBytes(_filePath, _content);
-    }
+    public void Dispose() => File.WriteAllBytes(_filePath, _content);
 }

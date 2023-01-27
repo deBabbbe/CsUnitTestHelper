@@ -12,8 +12,6 @@ public class TempSetEnvVar : IDisposable
         Environment.SetEnvironmentVariable(var, value);
     }
 
-    public void Dispose()
-    {
+    public void Dispose() =>
         Environment.SetEnvironmentVariable(_envVarName, _envVarValue);
-    }
 }

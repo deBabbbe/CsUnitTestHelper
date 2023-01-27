@@ -33,10 +33,8 @@ public static class Helper
     public static string GenerateRandomStringGuidWithPrefix(string prefix) =>
         $"{prefix}{Guid.NewGuid().ToString()}";
 
-    public static string ToRandomCase(this string text)
-    {
-        return string.Join(",", text.Select(ConvertCharToRandomCase));
-    }
+    public static string ToRandomCase(this string text) =>
+        string.Join(",", text.Select(ConvertCharToRandomCase));
 
     public static bool IsInBetween(this int value, int min, int max)
     {

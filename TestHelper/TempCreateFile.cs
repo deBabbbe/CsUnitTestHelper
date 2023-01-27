@@ -12,8 +12,5 @@ public class TempCreateFile : IDisposable
         File.WriteAllText(_path, content);
     }
 
-    public void Dispose()
-    {
-        File.Delete(_path);
-    }
+    public void Dispose() => File.Delete(_path);
 }
