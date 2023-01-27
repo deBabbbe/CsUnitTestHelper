@@ -73,5 +73,4 @@ public static class Helper
     private static int GenerateRandomDay() => RandomNumberGenerator.GetInt32(1, 27);
     private static int GenerateRandomHour() => RandomNumberGenerator.GetInt32(0, 24);
     private static int GenerateRandomMinuteOrSecond() => RandomNumberGenerator.GetInt32(0, 60);
-
 }
