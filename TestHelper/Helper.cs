@@ -58,13 +58,13 @@ public static class Helper
             charText.ToString().ToLower();
 
     private static bool IsValueSmallerMaxValue(int value, int max) =>
-        LogByCondition(value > max, $"{max} is smaller than {value}");
+        LogOnCondition(value > max, $"{max} is smaller than {value}");
 
     private static bool IsValueBiggerMinValue(int value, int min) =>
-        LogByCondition(value < min, $"{min} is bigger than {value}");
+        LogOnCondition(value < min, $"{min} is bigger than {value}");
 
 
-    private static bool LogByCondition(bool condition, string logText)
+    private static bool LogOnCondition(bool condition, string logText)
     {
         if (condition)
         {
