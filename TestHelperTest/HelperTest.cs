@@ -3,6 +3,7 @@ using TestHelper;
 
 namespace TestHelperTest;
 
+[TestFixture]
 public class HelperTests
 {
     [Test]
@@ -191,6 +192,5 @@ public class HelperTests
         public int MyProperty { get; set; }
     }
 
-    private class MyAttribute : Attribute
-    { }
+    private class MyAttribute : Attribute { }
 }

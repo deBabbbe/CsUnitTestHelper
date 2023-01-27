@@ -4,6 +4,7 @@ using TestHelper;
 
 namespace TestHelperTest;
 
+[TestFixture]
 public class TempCreateDirectoryTests
 {
     [Test]

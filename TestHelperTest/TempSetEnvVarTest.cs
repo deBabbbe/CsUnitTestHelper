@@ -4,6 +4,7 @@ using TestHelper;
 
 namespace TestHelperTest;
 
+[TestFixture]
 public class TempSetEnvVarTest
 {
     [Test]
