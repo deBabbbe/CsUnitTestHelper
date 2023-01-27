@@ -16,7 +16,7 @@ public class TempDeleteFileTests
 
         File.WriteAllText(path.ExpandEnv(), expectedText);
 
-        using (new TempDeleteFile(path, expectedText))
+        using (new TempDeleteFile(path))
         {
             FileAssert.DoesNotExist(path.ExpandEnv(), expectedText);
         }

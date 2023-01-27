@@ -61,7 +61,7 @@ Sets a env variable to value and sets it back to the value before, when disposed
 
 Sets a AppSetting to value and sets it back to initial state, when disposed
 
-### TempDeleteFile(string filePath, string content)
+### TempDeleteFile(string filePath)
 
 Removes a file temporarily and restores it, when disposed
 
