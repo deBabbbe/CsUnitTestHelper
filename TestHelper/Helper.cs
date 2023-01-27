@@ -36,20 +36,8 @@ public static class Helper
     public static string ToRandomCase(this string text) =>
         string.Join(",", text.Select(ConvertCharToRandomCase));
 
-    public static bool IsInBetween(this int value, int min, int max)
-    {
-        if (min > value)
-        {
-            Console.WriteLine($"{min} is bigger than {value}");
-            return false;
-        }
-        if (max < value)
-        {
-            Console.WriteLine($"{max} is smaller than {value}");
-            return false;
-        }
-        return true;
-    }
+    public static bool IsInBetween(this int value, int min, int max) =>
+        IsValueBiggerMinValue(value, min) && IsValueSmallerMaxValue(value, max);
 
     public static bool HasAttribute<T>(this T _, Type attribute) where T : class =>
         Attribute.GetCustomAttribute(typeof(T), attribute) != null;
@@ -68,4 +56,24 @@ public static class Helper
         RandomNumberGenerator.GetInt32(0, 2) == 1 ?
             charText.ToString().ToUpper() :
             charText.ToString().ToLower();
+
+    private static bool IsValueSmallerMaxValue(int value, int max)
+    {
+        if (value > max)
+        {
+            Console.WriteLine($"{max} is smaller than {value}");
+            return false;
+        }
+        return true;
+    }
+
+    private static bool IsValueBiggerMinValue(int value, int min)
+    {
+        if (value < min)
+        {
+            Console.WriteLine($"{min} is bigger than {value}");
+            return false;
+        }
+        return true;
+    }
 }
