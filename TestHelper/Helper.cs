@@ -18,17 +18,14 @@ public static class Helper
 
     public static bool GenerateRandomBool() => RandomNumberGenerator.GetInt32(2) == 0;
 
-    public static DateTime GenerateRandomDateTime()
-    {
-        var year = RandomNumberGenerator.GetInt32(1870, 2301);
-        var month = RandomNumberGenerator.GetInt32(1, 13);
-        var day = RandomNumberGenerator.GetInt32(1, 27);
-        var hour = RandomNumberGenerator.GetInt32(0, 24);
-        var minute = RandomNumberGenerator.GetInt32(0, 60);
-        var second = RandomNumberGenerator.GetInt32(0, 60);
-
-        return new DateTime(year, month, day, hour, minute, second);
-    }
+    public static DateTime GenerateRandomDateTime() =>
+        new DateTime(
+            GenerateRandomYear(),
+            GenerateRandomMonth(),
+            GenerateRandomDay(),
+            GenerateRandomHour(),
+            GenerateRandomMinuteOrSecond(),
+            GenerateRandomMinuteOrSecond());
 
     public static string GenerateRandomStringGuidWithPrefix(string prefix) =>
         $"{prefix}{Guid.NewGuid().ToString()}";
@@ -70,4 +67,11 @@ public static class Helper
         }
         return !condition;
     }
+
+    private static int GenerateRandomYear() => RandomNumberGenerator.GetInt32(1870, 2301);
+    private static int GenerateRandomMonth() => RandomNumberGenerator.GetInt32(1, 13);
+    private static int GenerateRandomDay() => RandomNumberGenerator.GetInt32(1, 27);
+    private static int GenerateRandomHour() => RandomNumberGenerator.GetInt32(0, 24);
+    private static int GenerateRandomMinuteOrSecond() => RandomNumberGenerator.GetInt32(0, 60);
+
 }
