@@ -18,4 +18,17 @@ public class TempCreateDirectoryTests
         }
         DirectoryAssert.DoesNotExist(path.ExpandEnv());
     }
+
+    [Test]
+    public void TempCreateDirectoryTests_CreatesAndDeletesFolder_FolderIsNotEmpty()
+    {
+        const string path = "%temp%/Dings";
+        DirectoryAssert.DoesNotExist(path.ExpandEnv());
+        using (new TempCreateDirectory(path))
+        {
+            DirectoryAssert.Exists(path.ExpandEnv());
+            Directory.CreateDirectory(Path.Combine(path.ExpandEnv(), "Test"));
+        }
+        DirectoryAssert.DoesNotExist(path.ExpandEnv());
+    }
 }

@@ -12,5 +12,5 @@ public class TempCreateDirectory : IDisposable
         Directory.CreateDirectory(_path);
     }
 
-    public void Dispose() => Directory.Delete(_path);
+    public void Dispose() => Directory.Delete(_path, recursive: true);
 }
