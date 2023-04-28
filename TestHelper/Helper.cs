@@ -42,9 +42,7 @@ public static class Helper
     public static bool HasPropertyWithAttribute<T>(this T _, string propertyName, Type attribute) where T : class
     {
         var property = typeof(T).GetProperty(propertyName);
-        return property == null
-            ? false
-            : Attribute.IsDefined(property, attribute);
+        return property != null && Attribute.IsDefined(property, attribute);
     }
 
     private static string ConvertCharToRandomCase(char charText) =>
