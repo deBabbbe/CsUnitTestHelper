@@ -4,7 +4,9 @@
     "formulahendry.dotnet-test-explorer",
     "ms-dotnettools.csharp",
     "aliasadidev.nugetpackagemanagergui",
-    "ms-vscode.vs-keybindings",
-    "hbenl.vscode-test-explorer"
+    "hbenl.vscode-test-explorer",
+    "jmrog.vscode-nuget-package-manager",
+    "fernandoescolar.vscode-solution-explorer",
+    "ms-vscode.vs-keybindings"
   ]
 }
