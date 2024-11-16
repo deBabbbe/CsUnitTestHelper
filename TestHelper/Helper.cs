@@ -46,7 +46,7 @@ public static class Helper
     }
 
     private static string ConvertCharToRandomCase(char charText) =>
-        RandomNumberGenerator.GetInt32(0, 2) == 1 ?
+        GenerateRandomBool() ?
             charText.ToString().ToUpper() :
             charText.ToString().ToLower();
 
