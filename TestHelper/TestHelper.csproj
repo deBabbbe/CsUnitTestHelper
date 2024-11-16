@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="ClassExtensions" Version="0.0.4" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.0" />
   </ItemGroup>
 
 </Project>
