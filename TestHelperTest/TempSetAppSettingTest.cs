@@ -1,5 +1,6 @@
 using System.Configuration;
 using TestHelper;
+using NUnit.Framework;
 
 namespace TestHelperTest;
 
@@ -11,14 +12,14 @@ public class TempSetAppSettingTest
     {
         const string key = "TestEntry";
         const string value = "TestValue";
-        Assert.IsNull(ConfigurationManager.AppSettings[key], $"{key} was already set");
+        Assert.That(ConfigurationManager.AppSettings[key], Is.Null, $"{key} was already set");
 
         using (new TempSetAppSetting(key, value))
         {
-            Assert.IsTrue(ConfigurationManager.AppSettings.AllKeys.Contains(key), $"{key} was not set");
+            Assert.That(ConfigurationManager.AppSettings.AllKeys.Contains(key), Is.True, $"{key} was not set");
         }
 
-        Assert.IsNull(ConfigurationManager.AppSettings[key], $"{key} was not set to null");
+        Assert.That(ConfigurationManager.AppSettings[key], Is.Null, $"{key} was not set to null");
     }
 
     [Test]
@@ -29,13 +30,13 @@ public class TempSetAppSettingTest
         const string value = "TestValue";
         ConfigurationManager.AppSettings[key] = initValue;
 
-        Assert.AreEqual(initValue, ConfigurationManager.AppSettings[key]);
+        Assert.That(ConfigurationManager.AppSettings[key], Is.EqualTo(initValue));
 
         using (new TempSetAppSetting(key, value))
         {
-            Assert.AreEqual(value, ConfigurationManager.AppSettings[key]);
+            Assert.That(ConfigurationManager.AppSettings[key], Is.EqualTo(value));
         }
 
-        Assert.AreEqual(initValue, ConfigurationManager.AppSettings[key]);
+        Assert.That(ConfigurationManager.AppSettings[key], Is.EqualTo(initValue));
     }
 }

@@ -13,12 +13,12 @@ public class TempSetEnvVarTest
         const string name = "Schorsch";
         var value = Guid.NewGuid().ToString();
 
-        Assert.AreEqual($"%{name}%".ExpandEnv(), $"%{name}%");
+        Assert.That($"%{name}%".ExpandEnv(), Is.EqualTo($"%{name}%"));
         using (new TempSetEnvVar(name, value))
         {
-            Assert.AreEqual($"%{name}%".ExpandEnv(), value);
+            Assert.That($"%{name}%".ExpandEnv(), Is.EqualTo(value));
         }
-        Assert.AreEqual($"%{name}%".ExpandEnv(), $"%{name}%");
+        Assert.That($"%{name}%".ExpandEnv(), Is.EqualTo($"%{name}%"));
     }
 
     [Test]
@@ -28,18 +28,18 @@ public class TempSetEnvVarTest
         var valueBefore = Guid.NewGuid().ToString();
         var value = Guid.NewGuid().ToString();
 
-        Assert.AreEqual($"%{name}%".ExpandEnv(), $"%{name}%");
+        Assert.That($"%{name}%".ExpandEnv(), Is.EqualTo($"%{name}%"));
         using (new TempSetEnvVar(name, valueBefore))
         {
-            Assert.AreEqual($"%{name}%".ExpandEnv(), valueBefore);
+            Assert.That($"%{name}%".ExpandEnv(), Is.EqualTo(valueBefore));
 
             using (new TempSetEnvVar(name, value))
             {
-                Assert.AreEqual($"%{name}%".ExpandEnv(), value);
+                Assert.That($"%{name}%".ExpandEnv(), Is.EqualTo(value));
             }
 
-            Assert.AreEqual($"%{name}%".ExpandEnv(), valueBefore);
+            Assert.That($"%{name}%".ExpandEnv(), Is.EqualTo(valueBefore));
         }
-        Assert.AreEqual($"%{name}%".ExpandEnv(), $"%{name}%");
+        Assert.That($"%{name}%".ExpandEnv(), Is.EqualTo($"%{name}%"));
     }
 }

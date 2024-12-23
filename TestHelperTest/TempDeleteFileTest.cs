@@ -1,5 +1,6 @@
 
 using ClassExtensions;
+using NUnit.Framework.Legacy;
 using TestHelper;
 
 namespace TestHelperTest;
@@ -21,6 +22,6 @@ public class TempDeleteFileTests
             FileAssert.DoesNotExist(path.ExpandEnv(), expectedText);
         }
         FileAssert.Exists(path.ExpandEnv());
-        Assert.AreEqual(expectedText, File.ReadAllText(path.ExpandEnv()));
+        Assert.That(File.ReadAllText(path.ExpandEnv()), Is.EqualTo(expectedText));
     }
 }

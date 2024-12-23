@@ -1,5 +1,6 @@
 
 using ClassExtensions;
+using NUnit.Framework.Legacy;
 using TestHelper;
 
 namespace TestHelperTest;

@@ -1,5 +1,7 @@
 using System.Diagnostics;
 using TestHelper;
+using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace TestHelperTest;
 
@@ -14,8 +16,8 @@ public class HelperTests
         var toCompare = Helper.GenerateRandomInt();
         if (toCompare == result) toCompare = Helper.GenerateRandomInt();
 
-        Assert.IsTrue(result.IsInBetween(1, 10));
-        Assert.AreNotEqual(toCompare, result);
+        Assert.That(result.IsInBetween(1, 10), Is.True);
+        CollectionAssert.AreNotEqual(new[] { toCompare }, new[] { result });
     }
 
     [Test]
@@ -26,8 +28,8 @@ public class HelperTests
         var results = Helper.GenerateRandomList(() => Helper.GenerateRandomInt(min, max), 100);
         results.ForEach(result =>
         {
-            Assert.IsTrue(result.IsInBetween(min, max));
-            Assert.AreNotEqual(Helper.GenerateRandomInt(), result);
+            Assert.That(result.IsInBetween(min, max), Is.True);
+            CollectionAssert.AreNotEqual(new[] { Helper.GenerateRandomInt() }, new[] { result });
         });
     }
 
@@ -103,7 +105,7 @@ public class HelperTests
     public void GenerateRandomBoolTest()
     {
         var randomBools = Helper.GenerateRandomList(Helper.GenerateRandomBool, 100);
-        Assert.AreEqual(2, randomBools.Distinct().Count());
+        Assert.That(randomBools.Distinct().Count(), Is.EqualTo(2));
     }
 
     [Test]
@@ -111,13 +113,13 @@ public class HelperTests
     {
         var result = Helper.GenerateRandomDateTime();
 
-        Assert.AreNotEqual(DateTime.MinValue, result);
-        Assert.IsTrue(result.Year.IsInBetween(1870, 2300));
-        Assert.IsTrue(result.Month.IsInBetween(1, 12));
-        Assert.IsTrue(result.Day.IsInBetween(1, 26));
-        Assert.IsTrue(result.Hour.IsInBetween(0, 23));
-        Assert.IsTrue(result.Minute.IsInBetween(0, 59));
-        Assert.IsTrue(result.Second.IsInBetween(0, 59));
+        Assert.That(result, Is.Not.EqualTo(DateTime.MinValue));
+        Assert.That(result.Year.IsInBetween(1870, 2300), Is.True);
+        Assert.That(result.Month.IsInBetween(1, 12), Is.True);
+        Assert.That(result.Day.IsInBetween(1, 26), Is.True);
+        Assert.That(result.Hour.IsInBetween(0, 23), Is.True);
+        Assert.That(result.Minute.IsInBetween(0, 59), Is.True);
+        Assert.That(result.Second.IsInBetween(0, 59), Is.True);
     }
 
     [Test]
@@ -127,15 +129,15 @@ public class HelperTests
         var result = Helper.GenerateRandomStringGuidWithPrefix(prefix);
         StringAssert.StartsWith(prefix, result);
         var isParsable = Guid.TryParse(result.Replace(prefix, ""), out var parsedGuid);
-        Assert.IsTrue(isParsable, "Guid not parsable");
-        Assert.AreNotEqual(Guid.Empty, parsedGuid);
+        Assert.That(isParsable, Is.True, "Guid not parsable");
+        CollectionAssert.AreNotEqual(new[] { Guid.Empty }, new[] { parsedGuid });
     }
 
     [Test]
     public void ToRandomCaseTest()
     {
         var text = Helper.GenerateRandomString(100);
-        Assert.AreNotEqual(text.ToRandomCase(), text.ToRandomCase());
+        Assert.That(text.ToRandomCase(), Is.Not.EqualTo(text.ToRandomCase()));
     }
 
     [Test]

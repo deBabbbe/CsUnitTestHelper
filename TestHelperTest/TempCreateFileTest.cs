@@ -1,5 +1,7 @@
 
 using ClassExtensions;
+using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using TestHelper;
 
 namespace TestHelperTest;
@@ -17,7 +19,7 @@ public class TempCreateFileTests
         using (new TempCreateFile(path, expectedText))
         {
             FileAssert.Exists(path.ExpandEnv(), expectedText);
-            Assert.AreEqual(expectedText, File.ReadAllText(path.ExpandEnv()));
+            Assert.That(File.ReadAllText(path.ExpandEnv()), Is.EqualTo(expectedText));
         }
         FileAssert.DoesNotExist(path.ExpandEnv());
     }
